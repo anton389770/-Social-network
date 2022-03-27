@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ 
+<body>
+  <div class="wraper"  >
+     <div class="alert"></div>
+  </div>
+  
+ 
+ 
+  <style>
+    .wraper{
+      position: relative;
+      height: 800px;
+      background-color: aliceblue;
+    }
+
+    
+    .alert {
+      position: absolute;
+      padding: 15px;
+      border: 1px solid #d6e9c6;
+      border-radius: 4px;
+      color: #3c763d;
+      background-color: #dff0d8;
+      min-width: 100px;
+      height: 100px;
+      left: 0px;
+      top: 0px;
+      
+       
+    }
+    </style>
+    
+    <script>
+      const documentWraper = document.querySelector('.wraper');
+      const div = document.querySelector('.alert');
+
+      console.log(div)
+      function onDocumentWraperClick(){
+        console.log(event.clientX + 'px', event.clientY + 'px')
+         
+      };
+      
+       
+      
+      let st = getComputedStyle(div)
+      
+       let a = parseFloat( div.style.left += 0);
+       let b = parseFloat (div.style.top += 0);
+       
+      let displacement = parseFloat( div.style.left ) + 1 + 'px';
+       
+      function set(){
+         
+        let x = parseFloat(event.clientX);
+        let y = parseFloat(event.clientY );
+      
+        let time = setInterval(move,1);
+       
+        function move(){
+
+         if(a < x) {
+          div.style.left =  parseFloat( div.style.left ) + 1 + 'px';  
+            a = parseFloat(div.style.left);
+         }
+         else if(a > x){
+          div.style.left =  parseFloat( div.style.left ) - 1 + 'px';  
+            a = parseFloat(div.style.left);
+         }
+         else if(b < y){
+          div.style.top =  parseFloat( div.style.top ) + 1 + 'px';  
+            b = parseFloat(div.style.top);
+         }
+         else if(b > y){
+          div.style.top =  parseFloat( div.style.top ) - 1 + 'px';  
+            b = parseFloat(div.style.top);
+         }
+         
+        else  {
+          clearInterval(time);
+   
+        }
+      
+          
+       }
+        
+       
+      }
+
+       
+      
+
+      documentWraper.addEventListener('click' ,set)
+
+         
+       
+    </script>
+
+    
+</body>
+</html>
